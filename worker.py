@@ -198,7 +198,7 @@ class Worker(threading.Thread):
         # noinspection PyBroadException
         try:
             # Welcome the user to the bot
-            if self.cfg["Appearance"]["display_welcome_message"] == "yes":
+            if self.cfg["Appearance"]["display_welcome_message"] == True:
                 self.bot.send_message(self.chat.id, self.loc.get("conversation_after_start"))
             # If the user is not an admin, send him to the user menu
             if self.admin is None:
@@ -449,10 +449,11 @@ class Worker(threading.Thread):
             keyboard = [[telegram.KeyboardButton(self.loc.get("menu_order"))],
                         [telegram.KeyboardButton(self.loc.get("menu_order_status"))],
                         [telegram.KeyboardButton(self.loc.get("menu_add_credit"))],
-                        [telegram.KeyboardButton(self.loc.get("menu_language"))],
-                        [telegram.KeyboardButton(self.loc.get("menu_help")),
-                         telegram.KeyboardButton(self.loc.get("menu_bot_info"))]]
-            # Send the previously created keyboard to the user (ensuring it can be clicked only 1 time)
+                        #  [telegram.KeyboardButton(self.loc.get("menu_language"))],
+                        [telegram.KeyboardButton(self.loc.get("menu_help"))# ,
+                       #  telegram.KeyboardButton(self.loc.get("menu_bot_info"))
+                         ]]
+            # Send the previously created keybo/жщard to the user (ensuring it can be clicked only 1 time)
             self.bot.send_message(self.chat.id,
                                   self.loc.get("conversation_open_user_menu",
                                                credit=self.Price(self.user.credit)),
